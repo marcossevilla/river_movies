@@ -1,3 +1,4 @@
-export 'src/models/movie.dart';
-export 'src/models/movie_exception.dart';
-export 'src/movies_repository.dart';
+library movies;
+
+export 'src/data/models.dart';
+export 'src/domain/movies_repository.dart';
