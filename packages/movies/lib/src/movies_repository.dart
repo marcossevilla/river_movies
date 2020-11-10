@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:movies/src/models/movie_exception.dart';
 
 import 'globals.dart';
 import 'models/movie.dart';
@@ -13,14 +14,18 @@ class MovieRepository {
 
   /// public method to get all popular movies
   Future<List<Movie>> getPopularMovies() async {
-    final response = await _dio.get(
-      '${Globals.popularMovies}?api_key=$_apiKey&language=en-US&page=1',
-    );
+    try {
+      final response = await _dio.get(
+        '${Globals.popularMovies}?api_key=$_apiKey&language=en-US&page=1',
+      );
 
-    final results = List<Map<String, dynamic>>.from(response.data['results']);
+      final results = List<Map<String, dynamic>>.from(response.data['results']);
 
-    final movies = results.map((e) => Movie.fromMap(e)).toList(growable: false);
+      final movies = results.map((e) => Movie.fromMap(e)).toList();
 
-    return movies;
+      return movies;
+    } on DioError catch (error) {
+      throw MoviesException.fromDioError(error);
+    }
   }
 }
