@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
 
-import 'package:movies/models/movie.dart';
+import 'package:movies/movies.dart';
 
 import '../movies/movie_provider.dart';
 import 'widgets/movie_card.dart';
