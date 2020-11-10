@@ -1,0 +1,12 @@
+name: movies
+description: Dart package which manages the MovieAPI calls.
+version: 1.0.0
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  dio: ^3.0.10
+  equatable: ^1.2.0
+  meta: ^1.1.8
+  very_good_analysis: ^1.0.3
