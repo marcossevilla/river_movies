@@ -32,7 +32,13 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(title: const Text('River Movies'), elevation: 0),
       body: watch(moviesFutureProvider).when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, _) => Center(child: Text(error.toString())),
+        error: (error, _) {
+          if (error is MoviesException) {
+            return Center(child: Text(error.message));
+          } else {
+            return const Center(child: Text('Something wrong happened...'));
+          }
+        },
         data: (movies) {
           return RefreshIndicator(
             onRefresh: () => context.refresh(moviesFutureProvider),

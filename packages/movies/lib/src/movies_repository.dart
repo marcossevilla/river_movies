@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:movies/src/models/movie_exception.dart';
 
 import 'globals.dart';
 import 'models/movie.dart';
+import 'models/movie_exception.dart';
 
 /// repository with methods to get movies from api
 class MovieRepository {
